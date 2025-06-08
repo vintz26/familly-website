@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAMILLY - Comment ça marche ?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #00C9FF 0%, #92FE9D 50%, #FC00FF 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+        
+        /* Main Content */
+        .content {
+            padding: 4rem 0;
+        }
+        
+        /* Intro Section */
+        .intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .intro h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .intro p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Steps */
+        .steps {
+            margin-bottom: 4rem;
+        }
+        
+        .step {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            transition: transform 0.3s;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #00C9FF, #92FE9D);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .step-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .visual-box {
+            background: #f0f4ff;
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        
+        /* Double Impact Section */
+        .double-impact {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            margin-bottom: 4rem;
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .impact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        
+        .impact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Calculator */
+        .calculator {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-bottom: 4rem;
+        }
+        
+        .calculator h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        
+        .calc-input {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .calc-input input {
+            padding: 1rem;
+            font-size: 1.2rem;
+            border: 2px solid #00C9FF;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        
+        .calc-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .result-box {
+            background: linear-gradient(45deg, #00C9FF, #92FE9D);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .result-box h4 {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-box .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        /* FAQ */
+        .faq {
+            margin-bottom: 4rem;
+        }
+        
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            color: #666;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #00C9FF 0%, #92FE9D 50%, #FC00FF 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 25px;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-white {
+            background: white;
+            color: #00C9FF;
+        }
+        
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .calc-input {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Comment $FAM Fonctionne ?</h1>
+            <p class="subtitle">La crypto qui monte en aidant les familles</p>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="container">
+            <!-- Introduction -->
+            <section class="intro">
+                <h2>C'est Simple Comme Bonjour !</h2>
+                <p>FAMILLY combine les principes économiques de base avec un impact social réel. 
+                   Pas de mystère, juste de l'offre et de la demande au service du bien commun.</p>
+            </section>
+
+            <!-- 3 Steps -->
+            <section class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Offre Limitée</h3>
+                        <p>Il n'existe que 1 milliard de tokens $FAM. C'est tout. Pas de création supplémentaire possible. 
+                           Comme l'or ou le Bitcoin, c'est une ressource limitée.</p>
+                        <div class="visual-box">
+                            Supply Totale : 1,000,000,000 $FAM
+                            Création supplémentaire : IMPOSSIBLE ❌
+                            Rareté garantie : OUI ✅
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Demande Croissante</h3>
+                        <p>Chaque jour, plus de personnes découvrent FAMILLY et veulent participer. 
+                           Pourquoi ? Parce qu'ils peuvent gagner ET aider en même temps !</p>
+                        <div class="visual-box">
+                            Jour 1 : 100 holders
+                            Semaine 1 : 1,000 holders
+                            Mois 1 : 10,000 holders
+                            Croissance = EXPONENTIELLE 📈
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Prix qui Monte</h3>
+                        <p>Mathématique simple : Quand la demande augmente pour une offre fixe, 
+                           le prix monte automatiquement. C'est la loi du marché !</p>
+                        <div class="visual-box">
+                            Formule : Offre fixe + Demande ↑ = Prix ↑
+                            
+                            Exemple concret :
+                            Prix initial : 0.00001$
+                            Après 1 mois : 0.001$ (x100)
+                            Après 3 mois : 0.1$ (x10,000)
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Double Impact -->
+            <section class="double-impact">
+                <h2 style="text-align: center; margin-bottom: 1rem;">Le Double Impact FAMILLY</h2>
+                <p style="text-align: center; color: #666;">Gagnez de l'argent tout en changeant des vies</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card">
+                        <div class="impact-icon">💰</div>
+                        <h3>Impact Financier</h3>
+                        <p>Votre investissement peut faire x10, x100, voire x1000</p>
+                        <p><strong>Exemples réels :</strong></p>
+                        <p>SHIB : x1,000,000</p>
+                        <p>DOGE : x50,000</p>
+                        <p>PEPE : x10,000</p>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <div class="impact-icon">❤️</div>
+                        <h3>Impact Social</h3>
+                        <p>30% des fonds pour des actions concrètes</p>
+                        <p><strong>Déjà prévu :</strong></p>
+                        <p>1,000 licences sportives</p>
+                        <p>5,000 kits scolaires</p>
+                        <p>100 familles aidées</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calculator -->
+            <section class="calculator">
+                <h2>Calculateur de Gains Potentiels</h2>
+                <div class="calc-input">
+                    <label>Votre investissement :</label>
+                    <input type="number" id="investment" value="100" min="10" max="10000">
+                    <span>€</span>
+                </div>
+                
+                <div class="calc-results" id="results">
+                    <div class="result-box">
+                        <h4>Après 1 mois (x5)</h4>
+                        <div class="value">500€</div>
+                    </div>
+                    <div class="result-box">
+                        <h4>Après 3 mois (x20)</h4>
+                        <div class="value">2,000€</div>
+                    </div>
+                    <div class="result-box">
+                        <h4>Après 6 mois (x100)</h4>
+                        <div class="value">10,000€</div>
+                    </div>
+                    <div class="result-box">
+                        <h4>Familles aidées</h4>
+                        <div class="value">5</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="faq">
+                <h2>Questions Fréquentes</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        C'est trop beau pour être vrai ?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Non ! C'est le principe de base de l'économie. Bitcoin est passé de 0.001$ à 70,000$. 
+                        SHIB, DOGE, PEPE ont tous fait x1000 ou plus. La différence ? 
+                        FAMILLY a une vraie utilité sociale en plus !
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Quand dois-je vendre ?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        C'est vous qui décidez ! Le marché est ouvert 24/7. Stratégie populaire : 
+                        vendez 20% quand vous doublez pour récupérer votre mise, 
+                        gardez le reste pour le long terme.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Et si le prix baisse ?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Les fluctuations sont normales en crypto. Mais FAMILLY a des fondations solides : 
+                        vraie utilité, communauté forte, actions sociales. 
+                        Les baisses temporaires sont des opportunités d'achat !
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Comment les familles sont-elles aidées ?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        30% des tokens sont dédiés aux actions sociales. La communauté vote pour les priorités. 
+                        Tout est transparent et documenté. Exemples : licences sportives payées directement aux clubs, 
+                        kits scolaires achetés et distribués, etc.
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="cta">
+                <h2>Prêt à Changer Votre Vie et Celle des Autres ?</h2>
+                <p>Rejoignez des milliers de personnes qui gagnent en aidant !</p>
+                
+                <div class="cta-buttons">
+                    <a href="https://pump.fun/coin/hKmkuPbuTG5Gu3UhL8vztXNjfWgMNY87Bxqqfvgpump" class="btn btn-white">
+                        Acheter $FAM Maintenant
+                    </a>
+                    <a href="https://t.me/FAMILLY_Official" class="btn btn-outline">
+                        Rejoindre la Communauté
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Calculator
+        document.getElementById('investment').addEventListener('input', function() {
+            const amount = parseFloat(this.value) || 0;
+            const results = document.getElementById('results');
+            
+            results.innerHTML = `
+                <div class="result-box">
+                    <h4>Après 1 mois (x5)</h4>
+                    <div class="value">${(amount * 5).toLocaleString()}€</div>
+                </div>
+                <div class="result-box">
+                    <h4>Après 3 mois (x20)</h4>
+                    <div class="value">${(amount * 20).toLocaleString()}€</div>
+                </div>
+                <div class="result-box">
+                    <h4>Après 6 mois (x100)</h4>
+                    <div class="value">${(amount * 100).toLocaleString()}€</div>
+                </div>
+                <div class="result-box">
+                    <h4>Familles aidées</h4>
+                    <div class="value">${Math.floor(amount / 20)}</div>
+                </div>
+            `;
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const span = this.querySelector('span');
+                span.textContent = this.classList.contains('active') ? '−' : '+';
+            });
+        });
+    </script>
+</body>
+</html>
